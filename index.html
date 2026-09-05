@@ -29,7 +29,7 @@
   nav .logo { font-size: 16px; font-weight: 700; }
   nav .logo span { color: var(--blue); }
   nav .spacer { flex: 1; }
-  nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 14px; white-space: nowrap; }
   nav a:hover { color: var(--ink); }
   /* hero */
   .hero { padding: 72px 0 56px; text-align: center; }
@@ -52,6 +52,17 @@
   }
   .btn-ghost:hover { background: var(--blue-soft); }
   .note { margin-top: 14px; font-size: 12px; color: var(--muted); }
+  /* download card */
+  .dl-card {
+    margin: 26px auto 0; max-width: 620px; text-align: left;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 8px 20px; font-size: 13px;
+  }
+  .dl-card dl { display: grid; grid-template-columns: 60px 1fr; gap: 8px 14px; padding: 10px 0; }
+  .dl-card dt { font-weight: 600; color: var(--ink); }
+  .dl-card dd { margin: 0; color: var(--muted); }
+  .dl-card dd a { color: var(--blue); text-decoration: none; }
+  .dl-card dd a:hover { text-decoration: underline; }
   /* sections */
   section { padding: 56px 0; border-top: 1px solid var(--line); }
   h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
@@ -101,6 +112,9 @@
   @media (max-width: 640px) {
     .hero { padding: 48px 0 40px; }
     .loop .step { flex-direction: row; }
+    nav { flex-wrap: wrap; }
+    .dl-card dl { grid-template-columns: 1fr; gap: 4px 0; }
+    .dl-card dt { margin-top: 6px; }
   }
 </style>
 </head>
@@ -112,28 +126,38 @@
     <a href="#loop">方法论</a>
     <a href="#features">功能</a>
     <a href="#download">下载</a>
-    <a href="https://github.com/hou-152/entp-manual">GitHub</a> · <a href="https://github.com/hou-152/entp-manual-web/issues" target="_blank">反馈</a>
+    <a href="https://github.com/hou-152/entp-manual-web">GitHub</a> · <a href="https://github.com/hou-152/entp-manual-web/issues" target="_blank">反馈</a>
   </nav>
 </div>
 
 <header class="hero wrap">
-  <h1>好奇心动力回流系统</h1>
-  <p class="sub">本地单机 · 数据永远在你自己电脑上（SQLite + Markdown 双写）</p>
-  <div class="claim">「ENTP 动力回流」方法论目前唯一的软件实现</div>
+  <h1>想法先记下，手头的事继续做。</h1>
+  <p class="sub">一款 Windows 本地的注意力工作台：一次只推进一件事；冒出来的念头一行收进候选区，不弹表单、不用马上整理，也不必都变成任务；卡住了，再回来找下一步。</p>
+  <div class="claim">给经常「想明白了，却不想做了」的你——不限于 ENTP</div>
   <div class="cta" id="download">
-    <a class="btn-primary" href="https://github.com/hou-152/entp-manual/releases/latest">去 GitHub 下载</a>
+    <a class="btn-primary" href="https://github.com/hou-152/entp-manual-web/releases/latest">下载 Windows 版</a>
     <a class="btn-ghost" href="#loop">先看它是怎么工作的</a>
   </div>
-  <p class="note">Windows 安装版 · 支持应用内静默更新</p>
+  <p class="note">免费 · 无账号 · 数据在你自己电脑上；当前版本与注意事项见下方下载说明</p>
+  <div class="dl-card">
+    <dl>
+      <dt>版本</dt><dd>当前发布 v2.1.9（2026-09-04）· 约 52 MB · Windows x64，装完即用、无需装 Python</dd>
+      <dt>成熟度</dt><dd>内部演示构建：空数据库会先载入示例内容供你上手，已有数据不会被覆盖</dd>
+      <dt>更新</dt><dd>每天最多自动检查一次新版本（失败不打扰）；下载和安装都需你点击确认，装完自动重启；更新包与本页同一发布地址</dd>
+      <dt>数据</dt><dd>SQLite + Markdown 存在安装目录内，无账号、无云端、无统计；卸载会连同数据一起删除，备份 = 复制整个安装目录</dd>
+      <dt>自启</dt><dd>安装会创建开机自启（系统计划任务，可关闭，卸载时移除）</dd>
+      <dt>反馈</dt><dd><a href="https://github.com/hou-152/entp-manual-web/issues" target="_blank">GitHub Issues</a>，每条都会被认真读</dd>
+    </dl>
+  </div>
 </header>
 
 <section class="wrap" id="loop">
   <h2>一个回环，五个动作</h2>
-  <p class="section-sub">ENTP 的问题不是没想法，而是好奇心在「想通」的瞬间被提前兑现。这套系统把好奇心当作资源来管理。</p>
+  <p class="section-sub">如果你经常「想通了就失去兴趣」，问题多半不是懒——是好奇心在「想通」的瞬间被提前兑现了。这套系统把好奇心当作资源来管理。</p>
   <div class="loop">
     <div class="step"><div class="no">1</div><div><h3>主线执行区</h3><p>多条主线，一次只推进一条；任务是可验证的最小行动，不是项目。</p></div></div>
     <div class="step"><div class="no">2</div><div><h3>零打断收纳</h3><p>执行中冒出新想法，一行输入回车进候选区——不弹表单，但默默记下出身主线。</p></div></div>
-    <div class="step"><div class="no">3</div><div><h3>候选区（页面池）</h3><p>不是管线，不是待办清单：每条候选带四个并列属性——类别、优先级、关联主线、状态。</p></div></div>
+    <div class="step"><div class="no">3</div><div><h3>候选区（页面池）</h3><p>不是管线，不是待办清单：每条候选带四个并列属性——类别、优先级、关联主线、状态。分栏只是状态标签，不用清空。</p></div></div>
     <div class="step"><div class="no">4</div><div><h3>卡住时带着上下文回看</h3><p>「没动力了」不是失败信号，是回到候选区的入口；顶部提醒你从哪条主线的哪个任务过来。</p></div></div>
     <div class="step"><div class="no">5</div><div><h3>灵感反哺主线</h3><p>找到切入口，一键把灵感转成《当前主线》的最小行动，跳回执行区继续推进。</p></div></div>
     <div class="back">↺ 那些原本打断你的想法，成了关键时刻的备用能源</div>
@@ -142,10 +166,10 @@
 
 <section class="wrap">
   <h2>它长什么样</h2>
-  <p class="section-sub">Linear 式工作区：轻量标签栏、平列表、蓝主操作、零花哨。</p>
+  <p class="section-sub">Linear 式工作区：轻量标签栏、安静的蓝白界面、零花哨。以下截图取自 v2.2.0 开发版（与可下载版本同一应用），画面为示例数据。</p>
   <div class="shots">
     <div class="shot"><img src="01-current-mainline.png" alt="当前主线执行区"><div class="cap"><h3>当前主线</h3><p>焦点任务、最小下一步、现实执行记录</p></div></div>
-    <div class="shot"><img src="02-ideas.png" alt="候选区"><div class="cap"><h3>候选区</h3><p>属性化平列表，四组筛选，抛弃沉底可恢复</p></div></div>
+    <div class="shot"><img src="02-ideas.png" alt="候选区"><div class="cap"><h3>候选区</h3><p>四个并列属性，按状态分栏；不是第二份待办清单，抛弃沉底可恢复</p></div></div>
     <div class="shot"><img src="03-today.png" alt="今日清单"><div class="cap"><h3>今日清单</h3><p>按日期保存的账本，不是每天凌晨重置的临时页</p></div></div>
     <div class="shot"><img src="04-calendar.png" alt="完成日历"><div class="cap"><h3>完成日历</h3><p>只显示发生过的完成事实，不算打卡连续天数</p></div></div>
   </div>
@@ -174,8 +198,8 @@
 </section>
 
 <footer class="wrap">
-  <p>ENTP 自强手册 · 方法论源自 B 站「动力回流系统」视频（BV1oD3F6tEeX），本软件是其唯一实现。 试用反馈请到 GitHub Issues 提交，每条都会被认真读。</p>
-  <p style="margin-top:6px"><a href="https://github.com/hou-152/entp-manual">GitHub</a> · 数据本地存储，无账号、无云端、无追踪</p>
+  <p>ENTP 自强手册 · 方法论源自 B 站<a href="https://www.bilibili.com/video/BV1oD3F6tEeX" target="_blank">「动力回流系统」视频</a>，本软件是其目前唯一的软件实现。 试用反馈请到 GitHub Issues 提交，每条都会被认真读。</p>
+  <p style="margin-top:6px"><a href="https://github.com/hou-152/entp-manual-web">GitHub</a> · 数据本地存储，无账号、无云端、无追踪</p>
 </footer>
 </body>
 </html>
